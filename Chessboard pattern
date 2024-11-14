@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    
+    // Take input for the size of the chessboard
+    cout << "Enter the size of the chessboard (n x n): ";
+    cin >> n;
+
+    // Create an n x n chessboard
+    vector<vector<int>> chessboard(n, vector<int>(n));
+
+    int blackSum = 0; // To store the sum of black squares (0's)
+    vector<int> rowSum(n, 0); // Array to store sum of each row
+
+    // Fill the chessboard with alternating 0's and 1's
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if ((i + j) % 2 == 0) {
+                chessboard[i][j] = 0; // Black square (0)
+                blackSum++; // Increment black square count
+            } else {
+                chessboard[i][j] = 1; // White square (1)
+            }
+            rowSum[i] += chessboard[i][j]; // Add to the sum of the current row
+        }
+    }
+
+    // Display the chessboard pattern
+    cout << "Chessboard Pattern (0 for black, 1 for white):\n";
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cout << chessboard[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Display the sum of black squares
+    cout << "Total black squares (sum of 0's): " << blackSum << endl;
+
+    // Display the sum of each row
+    cout << "Sum of each row:\n";
+    for (int i = 0; i < n; ++i) {
+        cout << "Row " << i + 1 << ": " << rowSum[i] << endl;
+    }
+
+    return 0;
+}
