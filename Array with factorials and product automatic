@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Function to calculate the factorial of a number
+int factorial(int n) {
+    int result = 1;
+    for (int i = 1; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    // Array of numbers
+    vector<int> numbers = {1, 2, 3, 4, 5};
+    vector<int> factorials;
+
+    // Calculate the factorial for each number and store in the factorials vector
+    for (int num : numbers) {
+        factorials.push_back(factorial(num));
+    }
+
+    // Calculate the product of all factorials
+    int product = 1;
+    for (int fact : factorials) {
+        product *= fact;
+    }
+
+    // Print the factorials
+    cout << "Factorials: ";
+    for (int fact : factorials) {
+        cout << fact << " ";
+    }
+    cout << endl;
+
+    // Print the product of all factorials
+    cout << "Product of all factorials: " << product << endl;
+
+    return 0;
+}
