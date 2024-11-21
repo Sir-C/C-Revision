@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the size of the matrix (n): ";
+    cin >> n;
+
+    // Check if n is odd
+    if (n % 2 == 0) {
+        cout << "Please enter an odd number for n." << endl;
+        return 1;
+    }
+
+    // Declare a 2D array for the matrix
+    int matrix[100][100] = {0}; // Assuming n <= 100
+
+    // Populate the matrix
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            // Place 1s on the edges
+            if (i == 0 || i == n - 1 || j == 0 || j == n - 1) {
+                matrix[i][j] = 1;
+            }
+            // Place 0 at the center
+            else if (i == n / 2 && j == n / 2) {
+                matrix[i][j] = 0;
+            }
+            // Keep the rest as empty space (0)
+            else {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+
+    // Print the matrix
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i == n / 2 && j == n / 2) {
+                cout << "0 ";
+            } else if (matrix[i][j] == 1) {
+                cout << "1 ";
+            } else {
+                cout << "  "; // Print spaces for empty regions
+            }
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
