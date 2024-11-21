@@ -26,12 +26,12 @@ int main() {
                 matrix[i][j] = '1';
             }
 
-            // Middle column: alternate between '^' and 'v'
+            // Middle column: alternate between '1' and '1'
             else if (j == n / 2) {
                 matrix[i][j] = (i % 2 == 0) ? '1' : '1';
             }
 
-            // Middle row: alternate between '^' and 'v'
+            // Middle row: alternate between '0' and '0'
             else if (i == n / 2) {
                 matrix[i][j] = (j % 2 == 0) ? '0' : '0';
             }
