@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+// Function to generate and display the n x n chessboard matrix
+void generateChessboardMatrix(int n) {
+    // Create a 2D array dynamically
+    int** matrix = new int*[n];
+    for (int i = 0; i < n; ++i) {
+        matrix[i] = new int[n]();
+    }
+
+    // Fill the lower triangle (including the main diagonal) with alternating 0s and 1s
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j <= i; ++j) {
+            // Alternating 0s and 1s based on row + column index
+            matrix[i][j] = (i + j) % 2;
+        }
+    }
+
+    // Display the matrix
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Free the allocated memory
+    for (int i = 0; i < n; ++i) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+}
+
+int main() {
+    int n;
+    cout << "Enter the size of the chessboard (n): ";
+    cin >> n;
+
+    // Validate input
+    if (n <= 0) {
+        cout << "Invalid input. The size must be a positive integer." << endl;
+        return 1;
+    }
+
+    // Generate and display the chessboard matrix
+    generateChessboardMatrix(n);
+
+    return 0;
+}
